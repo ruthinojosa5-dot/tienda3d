@@ -3,6 +3,7 @@ import { Plus, Check, Eye, Package } from 'lucide-react';
 import { Producto } from '../types';
 import { formatCurrency } from '../lib/whatsapp';
 import { useCart } from '../context/CartContext';
+import { IMAGES } from '../assets/images';
 
 interface ProductCardProps {
   producto: Producto;
@@ -13,12 +14,26 @@ export const ProductCard: React.FC<ProductCardProps> = ({ producto, onOpenDetail
   const { addToCart } = useCart();
   const [isAddedRecently, setIsAddedRecently] = useState(false);
   const [imgError, setImgError] = useState(false);
+  const [currentSrc, setCurrentSrc] = useState(producto.imagen_url || IMAGES.showcase3DPrinter);
+
+  React.useEffect(() => {
+    setCurrentSrc(producto.imagen_url || IMAGES.showcase3DPrinter);
+    setImgError(false);
+  }, [producto.imagen_url]);
 
   const handleQuickAdd = (e: React.MouseEvent) => {
     e.stopPropagation();
     addToCart(producto, 1);
     setIsAddedRecently(true);
     setTimeout(() => setIsAddedRecently(false), 1500);
+  };
+
+  const handleImgError = () => {
+    if (currentSrc !== IMAGES.showcase3DPrinter) {
+      setCurrentSrc(IMAGES.showcase3DPrinter);
+    } else {
+      setImgError(true);
+    }
   };
 
   const isOutOfStock = producto.stock <= 0;
@@ -30,11 +45,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ producto, onOpenDetail
     >
       {/* Visual Canvas (65%-70% of upper visual weight) */}
       <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-950/60">
-        {!imgError && producto.imagen_url ? (
+        {!imgError && currentSrc ? (
           <img
-            src={producto.imagen_url}
+            src={currentSrc}
             alt={producto.nombre}
-            onError={() => setImgError(true)}
+            onError={handleImgError}
             loading="lazy"
             referrerPolicy="no-referrer"
             className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"

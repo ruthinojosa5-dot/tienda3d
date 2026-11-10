@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowDown, MessageCircle, Layers, CheckCircle2, ShieldCheck, Zap } from 'lucide-react';
+import { IMAGES } from '../assets/images';
 
 interface HeroProps {
   onOpenCustomQuote: () => void;
@@ -65,7 +66,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenCustomQuote }) => {
           <div className="lg:col-span-5 relative">
             <div className="relative rounded-2xl overflow-hidden border border-slate-800 bg-slate-900 shadow-2xl aspect-[4/3] lg:aspect-auto lg:h-[440px] group">
               <img
-                src="/src/assets/images/showcase_3d_printers_1794347023025.jpg"
+                src={IMAGES.showcase3DPrinter}
                 alt="Impresora 3D de alta velocidad extruyendo turbina mecánica en Universo 3D"
                 className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
                 loading="eager"

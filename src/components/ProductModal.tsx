@@ -3,6 +3,7 @@ import { X, Plus, Minus, ShoppingBag, Check, Layers, Clock, Maximize2, ShieldAle
 import { Producto } from '../types';
 import { formatCurrency } from '../lib/whatsapp';
 import { useCart } from '../context/CartContext';
+import { IMAGES } from '../assets/images';
 
 interface ProductModalProps {
   producto: Producto | null;
@@ -16,6 +17,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({ producto, onClose })
   const [notas, setNotas] = useState('');
   const [isAdded, setIsAdded] = useState(false);
   const [imgError, setImgError] = useState(false);
+  const [currentSrc, setCurrentSrc] = useState<string>('');
 
   // Sync state when product opens
   React.useEffect(() => {
@@ -25,10 +27,19 @@ export const ProductModal: React.FC<ProductModalProps> = ({ producto, onClose })
       setNotas('');
       setIsAdded(false);
       setImgError(false);
+      setCurrentSrc(producto.imagen_url || IMAGES.showcase3DPrinter);
     }
   }, [producto]);
 
   if (!producto) return null;
+
+  const handleImgError = () => {
+    if (currentSrc !== IMAGES.showcase3DPrinter) {
+      setCurrentSrc(IMAGES.showcase3DPrinter);
+    } else {
+      setImgError(true);
+    }
+  };
 
   const handleAdd = () => {
     addToCart(producto, cantidad, selectedColor, notas);
@@ -60,11 +71,11 @@ export const ProductModal: React.FC<ProductModalProps> = ({ producto, onClose })
         <div className="grid grid-cols-1 md:grid-cols-2">
           {/* Left Column: Image Canvas */}
           <div className="relative aspect-square md:aspect-auto md:h-full bg-slate-950 flex items-center justify-center overflow-hidden">
-            {!imgError && producto.imagen_url ? (
+            {!imgError && currentSrc ? (
               <img
-                src={producto.imagen_url}
+                src={currentSrc}
                 alt={producto.nombre}
-                onError={() => setImgError(true)}
+                onError={handleImgError}
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
               />

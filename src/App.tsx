@@ -3,6 +3,7 @@ import { Search, SlidersHorizontal, RefreshCw, AlertCircle, Sparkles, MessageCir
 import { Producto } from './types';
 import { fetchProductosFromSupabase } from './lib/supabase';
 import { WHATSAPP_PHONE } from './lib/whatsapp';
+import { IMAGES } from './assets/images';
 import { CartProvider } from './context/CartContext';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
@@ -164,7 +165,7 @@ function StoreApp() {
               </div>
               <div className="lg:col-span-5 h-56 lg:h-full relative overflow-hidden bg-slate-950">
                 <img
-                  src="/src/assets/images/hero_3d_printer_workshop_1794347023222.jpg"
+                  src={IMAGES.heroWorkshop}
                   alt="Granja de impresoras 3D en el taller de Universo 3D"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                   loading="lazy"

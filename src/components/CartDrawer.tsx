@@ -3,6 +3,7 @@ import { X, Trash2, Plus, Minus, ShoppingBag, ArrowRight, MessageCircle, Truck, 
 import confetti from 'canvas-confetti';
 import { useCart } from '../context/CartContext';
 import { formatCurrency, buildWhatsAppLink } from '../lib/whatsapp';
+import { IMAGES } from '../assets/images';
 
 export const CartDrawer: React.FC = () => {
   const {
@@ -137,13 +138,16 @@ export const CartDrawer: React.FC = () => {
                     className="flex gap-3 p-3 rounded-xl bg-neutral-950/60 border border-neutral-800/80 group"
                   >
                     {/* Item Thumbnail */}
-                    <div className="w-16 h-16 rounded-lg overflow-hidden bg-neutral-900 shrink-0 border border-neutral-800">
+                    <div className="w-16 h-16 rounded-lg overflow-hidden bg-slate-900 shrink-0 border border-slate-800">
                       <img
-                        src={item.producto.imagen_url}
+                        src={item.producto.imagen_url || IMAGES.showcase3DPrinter}
                         alt={item.producto.nombre}
                         className="w-full h-full object-cover"
                         onError={(e) => {
-                          (e.target as HTMLElement).style.display = 'none';
+                          const target = e.target as HTMLImageElement;
+                          if (target.src !== IMAGES.showcase3DPrinter) {
+                            target.src = IMAGES.showcase3DPrinter;
+                          }
                         }}
                       />
                     </div>

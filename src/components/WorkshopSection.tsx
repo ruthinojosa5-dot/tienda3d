@@ -1,6 +1,7 @@
 import React from 'react';
 import { Settings, Cpu, ShieldCheck, Sparkles, MessageCircle } from 'lucide-react';
 import { WHATSAPP_PHONE } from '../lib/whatsapp';
+import { IMAGES } from '../assets/images';
 
 export const WorkshopSection: React.FC = () => {
   return (
@@ -76,27 +77,27 @@ export const WorkshopSection: React.FC = () => {
 
           <div className="lg:col-span-6 grid grid-cols-2 gap-4">
             <div className="space-y-4">
-              <div className="rounded-xl overflow-hidden border border-neutral-800 bg-neutral-900 aspect-[3/4]">
+              <div className="rounded-xl overflow-hidden border border-slate-800 bg-slate-900 aspect-[3/4]">
                 <img
-                  src="/src/assets/images/product_articulated_dragon_1794346033856.jpg"
+                  src={IMAGES.productDragon}
                   alt="Detalle de dragón articulado impreso en 3D"
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="p-4 rounded-xl bg-neutral-900 border border-neutral-800 text-xs">
+              <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 text-xs">
                 <div className="font-bold text-white mb-1">Print-in-Place</div>
-                <div className="text-neutral-400">Piezas articuladas sin ensambles posteriores ni pegamentos.</div>
+                <div className="text-slate-400">Piezas articuladas sin ensambles posteriores ni pegamentos.</div>
               </div>
             </div>
 
             <div className="space-y-4 pt-6">
-              <div className="p-4 rounded-xl bg-neutral-900 border border-neutral-800 text-xs">
-                <div className="font-bold text-amber-400 mb-1">Filamento Premium</div>
-                <div className="text-neutral-400">Control de diámetro a ±0.02mm para un flujo de extrusión uniforme.</div>
+              <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 text-xs">
+                <div className="font-bold text-cyan-400 mb-1">Filamento Premium</div>
+                <div className="text-slate-400">Control de diámetro a ±0.02mm para un flujo de extrusión uniforme.</div>
               </div>
-              <div className="rounded-xl overflow-hidden border border-neutral-800 bg-neutral-900 aspect-[3/4]">
+              <div className="rounded-xl overflow-hidden border border-slate-800 bg-slate-900 aspect-[3/4]">
                 <img
-                  src="/src/assets/images/product_geometric_planter_1794346033055.jpg"
+                  src={IMAGES.productPlanter}
                   alt="Maceta espiral geométrica en PLA terracota"
                   className="w-full h-full object-cover"
                 />

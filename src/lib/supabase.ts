@@ -79,11 +79,20 @@ export async function fetchProductosFromSupabase(): Promise<FetchResult> {
       const precioNum = typeof row.precio === 'number' ? row.precio : parseFloat(String(row.precio || 0));
       const stockNum = typeof row.stock === 'number' ? row.stock : parseInt(String(row.stock || 0), 10);
       
+      let rawImg = String(row.imagen_url || '');
+      // Normalize /src/assets/images/ paths to /images/ for production (Vercel)
+      if (rawImg.startsWith('/src/assets/images/')) {
+        rawImg = rawImg.replace('/src/assets/images/', '/images/');
+      }
+      if (!rawImg) {
+        rawImg = FALLBACK_PRODUCTOS[index % FALLBACK_PRODUCTOS.length].imagen_url;
+      }
+
       return {
         id: (row.id as string | number) ?? `supa-${index + 1}`,
         nombre: String(row.nombre || 'Pieza 3D'),
         precio: isNaN(precioNum) ? 0 : precioNum,
-        imagen_url: String(row.imagen_url || FALLBACK_PRODUCTOS[index % FALLBACK_PRODUCTOS.length].imagen_url),
+        imagen_url: rawImg,
         material: String(row.material || 'PLA'),
         stock: isNaN(stockNum) ? 5 : stockNum,
         descripcion: row.descripcion ? String(row.descripcion) : undefined,
