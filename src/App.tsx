@@ -87,7 +87,7 @@ function StoreApp() {
   }, [productos, searchQuery, selectedMaterial, sortBy]);
 
   return (
-    <div className="min-h-screen bg-neutral-950 text-neutral-100 flex flex-col font-sans selection:bg-amber-400 selection:text-neutral-950">
+    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans selection:bg-cyan-400 selection:text-slate-950">
       
       {/* Top Navigation */}
       <Navbar
@@ -100,20 +100,20 @@ function StoreApp() {
       <Hero onOpenCustomQuote={() => setIsCustomQuoteOpen(true)} />
 
       {/* Main Catalog Section */}
-      <main id="catalogo" className="flex-1 py-14 sm:py-20 border-b border-neutral-800/80">
+      <main id="catalogo" className="flex-1 py-14 sm:py-20 border-b border-slate-800/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           
           {/* Section Header */}
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div className="space-y-2">
-              <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-400 uppercase tracking-wider">
+              <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-400 uppercase tracking-wider">
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>Piezas Listas para Impresión</span>
               </div>
               <h2 className="text-3xl sm:text-4xl font-bold font-display text-white tracking-tight">
                 Catálogo de Impresiones 3D
               </h2>
-              <p className="text-xs sm:text-sm text-neutral-400 max-w-xl">
+              <p className="text-xs sm:text-sm text-slate-400 max-w-xl">
                 Seleccioná tus modelos con especificación técnica de filamento y stock en taller. Despachamos pedidos a todo el país.
               </p>
             </div>
@@ -122,37 +122,82 @@ function StoreApp() {
             {isUsingFallback && (
               <button
                 onClick={() => setIsSupabaseModalOpen(true)}
-                className="flex items-center gap-2 p-2.5 rounded-lg bg-neutral-900 border border-neutral-800 hover:border-neutral-700 text-xs text-neutral-300 transition-colors cursor-pointer text-left self-start md:self-auto"
+                className="flex items-center gap-2 p-2.5 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-700 text-xs text-slate-300 transition-colors cursor-pointer text-left self-start md:self-auto"
               >
-                <AlertCircle className="w-4 h-4 text-amber-400 shrink-0" />
+                <AlertCircle className="w-4 h-4 text-cyan-400 shrink-0" />
                 <span>Modo catálogo local activo · Ver estado de Supabase</span>
               </button>
             )}
           </div>
 
+          {/* New High-Tech 3D Printers Showcase Banner at Start of Products */}
+          <div className="relative rounded-2xl overflow-hidden border border-slate-800 bg-slate-900 shadow-xl group">
+            <div className="grid grid-cols-1 lg:grid-cols-12 items-center">
+              <div className="lg:col-span-7 p-6 sm:p-8 space-y-4">
+                <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-cyan-950/80 border border-cyan-800/60 text-cyan-300 text-xs font-mono">
+                  <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+                  <span>GRANJA DE IMPRESORAS 3D · CAPACIDAD ACTIVA</span>
+                </div>
+                <h3 className="text-xl sm:text-2xl font-bold font-display text-white">
+                  Producción continua con más de 15 impresoras CoreXY y SLA
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  Nuestra granja cuenta con equipamiento cerrado y control de humedad para extruir filamentos técnicos con máxima adherencia de capas. Si necesitás producción en serie o repuestos a medida, cotizá directamente con nuestros operadores.
+                </p>
+                <div className="flex flex-wrap items-center gap-3 pt-1">
+                  <button
+                    onClick={() => setIsCustomQuoteOpen(true)}
+                    className="px-4 py-2 rounded-lg bg-cyan-400 hover:bg-cyan-300 text-slate-950 text-xs font-bold transition-all shadow cursor-pointer active:scale-95"
+                  >
+                    Encargar Producción por Lote
+                  </button>
+                  <a
+                    href={`https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent('Hola Universo 3D! 👋 Quisiera consultar por capacidad de impresión 3D en granja.')}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium border border-slate-700 transition-colors"
+                  >
+                    <MessageCircle className="w-3.5 h-3.5 text-emerald-400" />
+                    <span>Consultar por WhatsApp</span>
+                  </a>
+                </div>
+              </div>
+              <div className="lg:col-span-5 h-56 lg:h-full relative overflow-hidden bg-slate-950">
+                <img
+                  src="/src/assets/images/hero_3d_printer_workshop_1794347023222.jpg"
+                  alt="Granja de impresoras 3D en el taller de Universo 3D"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                  loading="lazy"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-transparent to-transparent hidden lg:block" />
+              </div>
+            </div>
+          </div>
+
           {/* Interactive Controls Bar: Search & Material Filter Tabs */}
-          <div className="p-2 sm:p-3 rounded-2xl bg-neutral-900/60 border border-neutral-800/80 space-y-3">
+          <div className="p-2 sm:p-3 rounded-2xl bg-slate-900/60 border border-slate-800/80 space-y-3">
             <div className="flex flex-col md:flex-row items-center gap-3">
               
               {/* Search input */}
               <div className="relative w-full md:flex-1">
-                <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-500" />
+                <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
                 <input
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Buscar por nombre, material o uso (ej: dragon, maceta, petg)..."
-                  className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-neutral-950 border border-neutral-800 focus:border-amber-400 focus:outline-none text-xs text-white placeholder-neutral-500 transition-colors"
+                  placeholder="Buscar por nombre, material o uso (ej: turbina, dragon, petg)..."
+                  className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-cyan-400 focus:outline-none text-xs text-white placeholder-slate-500 transition-colors"
                 />
               </div>
 
               {/* Sort Dropdown */}
               <div className="flex items-center gap-2 w-full md:w-auto shrink-0">
-                <SlidersHorizontal className="w-4 h-4 text-neutral-400 hidden sm:block" />
+                <SlidersHorizontal className="w-4 h-4 text-slate-400 hidden sm:block" />
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
-                  className="w-full md:w-auto px-3 py-2.5 rounded-xl bg-neutral-950 border border-neutral-800 text-xs text-neutral-200 focus:border-amber-400 focus:outline-none cursor-pointer"
+                  className="w-full md:w-auto px-3 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-slate-200 focus:border-cyan-400 focus:outline-none cursor-pointer"
                 >
                   <option value="destacados">Destacados primero</option>
                   <option value="precio-asc">Precio: Menor a Mayor</option>
@@ -164,7 +209,7 @@ function StoreApp() {
                   onClick={loadData}
                   disabled={loading}
                   title="Recargar catálogo desde Supabase"
-                  className="p-2.5 rounded-xl bg-neutral-950 border border-neutral-800 hover:bg-neutral-800 text-neutral-300 transition-colors cursor-pointer disabled:opacity-50"
+                  className="p-2.5 rounded-xl bg-slate-950 border border-slate-800 hover:bg-slate-800 text-slate-300 transition-colors cursor-pointer disabled:opacity-50"
                   aria-label="Refrescar catálogo"
                 >
                   <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
@@ -175,7 +220,7 @@ function StoreApp() {
 
             {/* Material Segmented Filter Controls */}
             <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none">
-              <span className="text-[11px] font-semibold text-neutral-400 uppercase tracking-wider px-2 whitespace-nowrap">
+              <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider px-2 whitespace-nowrap">
                 Material:
               </span>
               {availableMaterials.map((mat) => (
@@ -184,8 +229,8 @@ function StoreApp() {
                   onClick={() => setSelectedMaterial(mat)}
                   className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all whitespace-nowrap cursor-pointer ${
                     selectedMaterial.toLowerCase() === mat.toLowerCase()
-                      ? 'bg-amber-400 text-neutral-950 font-semibold shadow-sm'
-                      : 'bg-neutral-950 hover:bg-neutral-800 text-neutral-400 hover:text-white border border-neutral-800'
+                      ? 'bg-cyan-400 text-slate-950 font-semibold shadow-sm'
+                      : 'bg-slate-950 hover:bg-slate-800 text-slate-400 hover:text-white border border-slate-800'
                   }`}
                 >
                   {mat}
@@ -197,14 +242,14 @@ function StoreApp() {
           {/* Product Grid Area */}
           {loading ? (
             <div className="py-24 text-center space-y-3">
-              <RefreshCw className="w-8 h-8 text-amber-400 animate-spin mx-auto" />
+              <RefreshCw className="w-8 h-8 text-cyan-400 animate-spin mx-auto" />
               <p className="text-sm font-medium text-white">Cargando piezas desde Supabase...</p>
-              <p className="text-xs text-neutral-500">Consultando tabla 'productos'</p>
+              <p className="text-xs text-slate-500">Consultando tabla 'productos'</p>
             </div>
           ) : filteredProducts.length === 0 ? (
-            <div className="py-20 text-center rounded-2xl bg-neutral-900/40 border border-neutral-800 p-8 space-y-3">
+            <div className="py-20 text-center rounded-2xl bg-slate-900/40 border border-slate-800 p-8 space-y-3">
               <p className="text-base font-semibold text-white">No se encontraron piezas con ese filtro</p>
-              <p className="text-xs text-neutral-400 max-w-md mx-auto">
+              <p className="text-xs text-slate-400 max-w-md mx-auto">
                 Probá con otro término de búsqueda o material, o solicitanos una pieza personalizada por WhatsApp.
               </p>
               <button
@@ -212,7 +257,7 @@ function StoreApp() {
                   setSearchQuery('');
                   setSelectedMaterial('Todos');
                 }}
-                className="px-4 py-2 rounded-lg bg-neutral-800 hover:bg-neutral-700 text-xs font-medium text-white transition-colors"
+                className="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-medium text-white transition-colors"
               >
                 Limpiar filtros
               </button>

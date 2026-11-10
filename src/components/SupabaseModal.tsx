@@ -62,29 +62,29 @@ export const SupabaseModal: React.FC<SupabaseModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-neutral-950/80 backdrop-blur-sm animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-slate-950/80 backdrop-blur-sm animate-in fade-in duration-200">
       <div
-        className="relative w-full max-w-xl bg-neutral-900 border border-neutral-800 rounded-2xl shadow-2xl overflow-hidden my-8 p-6 sm:p-8"
+        className="relative w-full max-w-xl bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden my-8 p-6 sm:p-8"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-2 rounded-full bg-neutral-950/60 text-neutral-400 hover:text-white hover:bg-neutral-800 transition-colors"
+          className="absolute top-4 right-4 p-2 rounded-full bg-slate-950/60 text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
           aria-label="Cerrar modal"
         >
           <X className="w-5 h-5" />
         </button>
 
         <div className="space-y-2 mb-6">
-          <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-400 uppercase tracking-wider">
+          <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-400 uppercase tracking-wider">
             <Database className="w-4 h-4" />
             <span>Integración Base de Datos</span>
           </div>
           <h2 className="text-2xl font-bold font-display text-white">
             Estado de Conexión a Supabase
           </h2>
-          <p className="text-xs text-neutral-400 leading-relaxed">
-            Universo 3D lee la tabla <code className="text-amber-400 font-mono">productos</code> (nombre, precio, imagen_url, material, stock) directamente de tu proyecto.
+          <p className="text-xs text-slate-400 leading-relaxed">
+            Universo 3D lee la tabla <code className="text-cyan-400 font-mono">productos</code> (nombre, precio, imagen_url, material, stock) directamente de tu proyecto.
           </p>
         </div>
 
@@ -118,37 +118,37 @@ export const SupabaseModal: React.FC<SupabaseModalProps> = ({
         {/* Form to view / update credentials */}
         <form onSubmit={handleSaveAndTest} className="space-y-4">
           <div className="space-y-1">
-            <label className="text-xs font-medium text-neutral-300 flex items-center gap-1.5">
-              <Globe className="w-3.5 h-3.5 text-amber-400" />
+            <label className="text-xs font-medium text-slate-300 flex items-center gap-1.5">
+              <Globe className="w-3.5 h-3.5 text-cyan-400" />
               <span>Supabase Project URL:</span>
             </label>
             <input
               type="text"
               value={url}
               onChange={(e) => setUrl(e.target.value)}
-              className="w-full px-3 py-2 rounded-lg bg-neutral-950 border border-neutral-800 text-xs font-mono text-white focus:border-amber-400 focus:outline-none"
+              className="w-full px-3 py-2 rounded-lg bg-slate-950 border border-slate-800 text-xs font-mono text-white focus:border-cyan-400 focus:outline-none"
             />
           </div>
 
           <div className="space-y-1">
-            <label className="text-xs font-medium text-neutral-300 flex items-center justify-between">
+            <label className="text-xs font-medium text-slate-300 flex items-center justify-between">
               <span className="flex items-center gap-1.5">
-                <KeyRound className="w-3.5 h-3.5 text-amber-400" />
+                <KeyRound className="w-3.5 h-3.5 text-cyan-400" />
                 <span>Supabase Anon Key:</span>
               </span>
-              <span className="text-[10px] text-neutral-500">API Key</span>
+              <span className="text-[10px] text-slate-500">API Key</span>
             </label>
             <input
               type="text"
               value={key}
               onChange={(e) => setKey(e.target.value)}
               placeholder="sb_publishable_... o eyJhbGciOi..."
-              className="w-full px-3 py-2 rounded-lg bg-neutral-950 border border-neutral-800 text-xs font-mono text-white focus:border-amber-400 focus:outline-none"
+              className="w-full px-3 py-2 rounded-lg bg-slate-950 border border-slate-800 text-xs font-mono text-white focus:border-cyan-400 focus:outline-none"
             />
           </div>
 
           {statusMessage && (
-            <div className="text-xs text-amber-300 p-2 rounded bg-neutral-950 border border-neutral-800">
+            <div className="text-xs text-cyan-300 p-2 rounded bg-slate-950 border border-slate-800">
               {statusMessage}
             </div>
           )}
@@ -157,7 +157,7 @@ export const SupabaseModal: React.FC<SupabaseModalProps> = ({
             <button
               type="submit"
               disabled={isTesting}
-              className="w-full sm:flex-1 py-2.5 px-4 rounded-xl bg-amber-400 hover:bg-amber-300 text-neutral-950 font-bold text-xs flex items-center justify-center gap-2 transition-all cursor-pointer disabled:opacity-50"
+              className="w-full sm:flex-1 py-2.5 px-4 rounded-xl bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold text-xs flex items-center justify-center gap-2 transition-all cursor-pointer disabled:opacity-50"
             >
               <RefreshCw className={`w-3.5 h-3.5 ${isTesting ? 'animate-spin' : ''}`} />
               <span>{isTesting ? 'Verificando...' : 'Guardar y Probar Conexión'}</span>
@@ -167,7 +167,7 @@ export const SupabaseModal: React.FC<SupabaseModalProps> = ({
               type="button"
               onClick={handleReset}
               disabled={isTesting}
-              className="w-full sm:w-auto py-2.5 px-4 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-neutral-300 text-xs font-medium flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+              className="w-full sm:w-auto py-2.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
             >
               <RotateCcw className="w-3.5 h-3.5" />
               <span>Restablecer</span>
@@ -175,7 +175,7 @@ export const SupabaseModal: React.FC<SupabaseModalProps> = ({
           </div>
         </form>
 
-        <div className="mt-6 pt-4 border-t border-neutral-800 text-[11px] text-neutral-400 leading-normal">
+        <div className="mt-6 pt-4 border-t border-slate-800 text-[11px] text-slate-400 leading-normal">
           💡 <strong>Tip para el administrador:</strong> Si tu Supabase está configurado con Row Level Security (RLS), asegurate de haber creado una política de lectura pública en la tabla <code>productos</code> (<code>CREATE POLICY "Permitir lectura publica" ON productos FOR SELECT USING (true);</code>).
         </div>
       </div>

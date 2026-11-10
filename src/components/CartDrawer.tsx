@@ -50,7 +50,7 @@ export const CartDrawer: React.FC = () => {
         particleCount: 80,
         spread: 60,
         origin: { y: 0.6 },
-        colors: ['#fbbf24', '#f59e0b', '#10b981', '#ffffff'],
+        colors: ['#22d3ee', '#06b6d4', '#10b981', '#38bdf8', '#ffffff'],
       });
     } catch {
       // fallback if canvas-confetti is not loaded
@@ -64,27 +64,27 @@ export const CartDrawer: React.FC = () => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-hidden bg-neutral-950/75 backdrop-blur-sm animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-50 overflow-hidden bg-slate-950/75 backdrop-blur-sm animate-in fade-in duration-200">
       <div className="absolute inset-0" onClick={() => setIsCartOpen(false)} />
 
       <div className="fixed inset-y-0 right-0 max-w-full flex pl-10">
         <aside
-          className="w-screen max-w-md bg-neutral-900 border-l border-neutral-800 shadow-2xl flex flex-col justify-between"
+          className="w-screen max-w-md bg-slate-900 border-l border-slate-800 shadow-2xl flex flex-col justify-between"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Header */}
-          <div className="px-6 py-5 border-b border-neutral-800/80 flex items-center justify-between">
+          <div className="px-6 py-5 border-b border-slate-800/80 flex items-center justify-between">
             <div className="flex items-center gap-2.5">
-              <ShoppingBag className="w-5 h-5 text-amber-400" />
+              <ShoppingBag className="w-5 h-5 text-cyan-400" />
               <h2 className="text-lg font-bold font-display text-white">Tu Carrito de Pedido</h2>
-              <span className="text-xs px-2 py-0.5 rounded-full bg-neutral-800 text-neutral-300 font-mono">
+              <span className="text-xs px-2 py-0.5 rounded-full bg-slate-800 text-slate-300 font-mono">
                 {totalItems}
               </span>
             </div>
 
             <button
               onClick={() => setIsCartOpen(false)}
-              className="p-1.5 rounded-lg text-neutral-400 hover:text-white hover:bg-neutral-800 transition-colors"
+              className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
               aria-label="Cerrar carrito"
             >
               <X className="w-5 h-5" />
@@ -96,19 +96,19 @@ export const CartDrawer: React.FC = () => {
             
             {/* Free shipping progress indicator */}
             {items.length > 0 && (
-              <div className="p-3.5 rounded-xl bg-neutral-950/80 border border-neutral-800/80 space-y-2">
+              <div className="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800/80 space-y-2">
                 <div className="flex items-center justify-between text-xs">
-                  <span className="text-neutral-300 flex items-center gap-1.5 font-medium">
-                    <Truck className="w-3.5 h-3.5 text-amber-400" />
+                  <span className="text-slate-300 flex items-center gap-1.5 font-medium">
+                    <Truck className="w-3.5 h-3.5 text-cyan-400" />
                     {remainingForFreeShipping === 0
                       ? '¡Tenés ENVÍO GRATIS a todo el país!'
                       : `Faltan ${formatCurrency(remainingForFreeShipping)} para envío gratis`}
                   </span>
-                  <span className="text-amber-400 font-mono font-semibold">{progressPercent}%</span>
+                  <span className="text-cyan-400 font-mono font-semibold">{progressPercent}%</span>
                 </div>
-                <div className="w-full h-1.5 bg-neutral-800 rounded-full overflow-hidden">
+                <div className="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
                   <div
-                    className="h-full bg-amber-400 transition-all duration-500 rounded-full"
+                    className="h-full bg-cyan-400 transition-all duration-500 rounded-full"
                     style={{ width: `${progressPercent}%` }}
                   />
                 </div>
@@ -156,15 +156,15 @@ export const CartDrawer: React.FC = () => {
                         </h4>
                         <button
                           onClick={() => removeFromCart(item.producto.id)}
-                          className="text-neutral-500 hover:text-red-400 p-0.5 transition-colors"
+                          className="text-slate-500 hover:text-red-400 p-0.5 transition-colors"
                           title="Eliminar del carrito"
                         >
                           <Trash2 className="w-3.5 h-3.5" />
                         </button>
                       </div>
 
-                      <div className="flex items-center gap-1.5 text-[11px] text-neutral-400">
-                        <span className="text-amber-400">{item.producto.material}</span>
+                      <div className="flex items-center gap-1.5 text-[11px] text-slate-400">
+                        <span className="text-cyan-400 font-medium">{item.producto.material}</span>
                         {item.colorSeleccionado && (
                           <>
                             <span>·</span>
@@ -174,17 +174,17 @@ export const CartDrawer: React.FC = () => {
                       </div>
 
                       {item.notasPersonalizadas && (
-                        <div className="text-[10px] text-neutral-400 italic truncate">
+                        <div className="text-[10px] text-slate-400 italic truncate">
                           Nota: {item.notasPersonalizadas}
                         </div>
                       )}
 
                       {/* Stepper & Price */}
                       <div className="flex items-center justify-between pt-1">
-                        <div className="flex items-center border border-neutral-800 rounded-md bg-neutral-900">
+                        <div className="flex items-center border border-slate-800 rounded-md bg-slate-900">
                           <button
                             onClick={() => updateQuantity(item.producto.id, item.cantidad - 1)}
-                            className="p-1 text-neutral-400 hover:text-white"
+                            className="p-1 text-slate-400 hover:text-white"
                             aria-label="Restar uno"
                           >
                             <Minus className="w-3 h-3" />
@@ -194,7 +194,7 @@ export const CartDrawer: React.FC = () => {
                           </span>
                           <button
                             onClick={() => updateQuantity(item.producto.id, item.cantidad + 1)}
-                            className="p-1 text-neutral-400 hover:text-white"
+                            className="p-1 text-slate-400 hover:text-white"
                             aria-label="Sumar uno"
                           >
                             <Plus className="w-3 h-3" />
@@ -212,13 +212,13 @@ export const CartDrawer: React.FC = () => {
                 <div className="flex justify-between items-center pt-2">
                   <button
                     onClick={clearCart}
-                    className="text-xs text-neutral-500 hover:text-neutral-300 transition-colors"
+                    className="text-xs text-slate-500 hover:text-slate-300 transition-colors"
                   >
                     Vaciar todo el carrito
                   </button>
                   <button
                     onClick={() => setShowCheckoutForm(!showCheckoutForm)}
-                    className="text-xs font-medium text-amber-400 hover:text-amber-300 transition-colors"
+                    className="text-xs font-medium text-cyan-400 hover:text-cyan-300 transition-colors"
                   >
                     {showCheckoutForm ? 'Ocultar datos de entrega' : 'Completar datos de entrega'}
                   </button>
@@ -228,7 +228,7 @@ export const CartDrawer: React.FC = () => {
 
             {/* Customer Details Form (Drawer sub-section) */}
             {items.length > 0 && showCheckoutForm && (
-              <div className="p-4 rounded-xl bg-neutral-950 border border-neutral-800 space-y-3 animate-in fade-in">
+              <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-3 animate-in fade-in">
                 <h4 className="text-xs font-semibold text-white uppercase tracking-wider">
                   Datos para el Pedido
                 </h4>
@@ -241,37 +241,37 @@ export const CartDrawer: React.FC = () => {
                 )}
 
                 <div className="space-y-1">
-                  <label className="text-[11px] font-medium text-neutral-300">Nombre completo *</label>
+                  <label className="text-[11px] font-medium text-slate-300">Nombre completo *</label>
                   <input
                     type="text"
                     value={customerInfo.nombre}
                     onChange={(e) => setCustomerInfo({ ...customerInfo, nombre: e.target.value })}
                     placeholder="Ej: Sofía Gómez"
-                    className="w-full px-2.5 py-1.5 rounded-lg bg-neutral-900 border border-neutral-800 text-xs text-white focus:border-amber-400 focus:outline-none"
+                    className="w-full px-2.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs text-white focus:border-cyan-400 focus:outline-none"
                   />
                 </div>
 
                 <div className="space-y-1">
-                  <label className="text-[11px] font-medium text-neutral-300">Teléfono WhatsApp</label>
+                  <label className="text-[11px] font-medium text-slate-300">Teléfono WhatsApp</label>
                   <input
                     type="tel"
                     value={customerInfo.telefono}
                     onChange={(e) => setCustomerInfo({ ...customerInfo, telefono: e.target.value })}
                     placeholder="Ej: +54 9 388..."
-                    className="w-full px-2.5 py-1.5 rounded-lg bg-neutral-900 border border-neutral-800 text-xs text-white focus:border-amber-400 focus:outline-none"
+                    className="w-full px-2.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs text-white focus:border-cyan-400 focus:outline-none"
                   />
                 </div>
 
                 <div className="space-y-1">
-                  <label className="text-[11px] font-medium text-neutral-300">Modalidad de Entrega</label>
+                  <label className="text-[11px] font-medium text-slate-300">Modalidad de Entrega</label>
                   <div className="grid grid-cols-2 gap-2">
                     <button
                       type="button"
                       onClick={() => setCustomerInfo({ ...customerInfo, metodoEntrega: 'retiro' })}
                       className={`flex items-center justify-center gap-1.5 py-2 px-2 rounded-lg text-xs font-medium border transition-colors ${
                         customerInfo.metodoEntrega === 'retiro'
-                          ? 'border-amber-400 bg-amber-400/10 text-amber-400'
-                          : 'border-neutral-800 bg-neutral-900 text-neutral-400'
+                          ? 'border-cyan-400 bg-cyan-400/10 text-cyan-400'
+                          : 'border-slate-800 bg-slate-900 text-slate-400'
                       }`}
                     >
                       <Store className="w-3.5 h-3.5" />
@@ -282,8 +282,8 @@ export const CartDrawer: React.FC = () => {
                       onClick={() => setCustomerInfo({ ...customerInfo, metodoEntrega: 'envio' })}
                       className={`flex items-center justify-center gap-1.5 py-2 px-2 rounded-lg text-xs font-medium border transition-colors ${
                         customerInfo.metodoEntrega === 'envio'
-                          ? 'border-amber-400 bg-amber-400/10 text-amber-400'
-                          : 'border-neutral-800 bg-neutral-900 text-neutral-400'
+                          ? 'border-cyan-400 bg-cyan-400/10 text-cyan-400'
+                          : 'border-slate-800 bg-slate-900 text-slate-400'
                       }`}
                     >
                       <Truck className="w-3.5 h-3.5" />
@@ -295,36 +295,36 @@ export const CartDrawer: React.FC = () => {
                 {customerInfo.metodoEntrega === 'envio' && (
                   <>
                     <div className="space-y-1">
-                      <label className="text-[11px] font-medium text-neutral-300">Dirección de entrega *</label>
+                      <label className="text-[11px] font-medium text-slate-300">Dirección de entrega *</label>
                       <input
                         type="text"
                         value={customerInfo.direccion}
                         onChange={(e) => setCustomerInfo({ ...customerInfo, direccion: e.target.value })}
                         placeholder="Calle, Número, Piso/Depto"
-                        className="w-full px-2.5 py-1.5 rounded-lg bg-neutral-900 border border-neutral-800 text-xs text-white focus:border-amber-400 focus:outline-none"
+                        className="w-full px-2.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs text-white focus:border-cyan-400 focus:outline-none"
                       />
                     </div>
                     <div className="space-y-1">
-                      <label className="text-[11px] font-medium text-neutral-300">Ciudad y Provincia</label>
+                      <label className="text-[11px] font-medium text-slate-300">Ciudad y Provincia</label>
                       <input
                         type="text"
                         value={customerInfo.ciudad}
                         onChange={(e) => setCustomerInfo({ ...customerInfo, ciudad: e.target.value })}
                         placeholder="San Salvador de Jujuy, Jujuy"
-                        className="w-full px-2.5 py-1.5 rounded-lg bg-neutral-900 border border-neutral-800 text-xs text-white focus:border-amber-400 focus:outline-none"
+                        className="w-full px-2.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs text-white focus:border-cyan-400 focus:outline-none"
                       />
                     </div>
                   </>
                 )}
 
                 <div className="space-y-1">
-                  <label className="text-[11px] font-medium text-neutral-300">Observaciones extras</label>
+                  <label className="text-[11px] font-medium text-slate-300">Observaciones extras</label>
                   <input
                     type="text"
                     value={customerInfo.notas}
                     onChange={(e) => setCustomerInfo({ ...customerInfo, notas: e.target.value })}
                     placeholder="Horarios de entrega, color alternativo, etc."
-                    className="w-full px-2.5 py-1.5 rounded-lg bg-neutral-900 border border-neutral-800 text-xs text-white focus:border-amber-400 focus:outline-none"
+                    className="w-full px-2.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs text-white focus:border-cyan-400 focus:outline-none"
                   />
                 </div>
               </div>
@@ -333,13 +333,13 @@ export const CartDrawer: React.FC = () => {
 
           {/* Footer & Checkout Action */}
           {items.length > 0 && (
-            <div className="p-6 border-t border-neutral-800/90 bg-neutral-950/80 space-y-4">
+            <div className="p-6 border-t border-slate-800/90 bg-slate-950/80 space-y-4">
               <div className="space-y-1.5 text-xs">
-                <div className="flex justify-between text-neutral-400">
+                <div className="flex justify-between text-slate-400">
                   <span>Subtotal ({totalItems} piezas)</span>
                   <span className="font-mono text-white">{formatCurrency(subtotal)}</span>
                 </div>
-                <div className="flex justify-between text-neutral-400">
+                <div className="flex justify-between text-slate-400">
                   <span>Entrega ({customerInfo.metodoEntrega === 'retiro' ? 'Retiro en taller' : 'Envío nacional'})</span>
                   <span className="font-mono text-white">
                     {customerInfo.metodoEntrega === 'retiro'
@@ -349,9 +349,9 @@ export const CartDrawer: React.FC = () => {
                       : formatCurrency(shippingCost)}
                   </span>
                 </div>
-                <div className="pt-2 border-t border-neutral-800 flex justify-between text-base font-bold text-white">
+                <div className="pt-2 border-t border-slate-800 flex justify-between text-base font-bold text-white">
                   <span>Total Estimado</span>
-                  <span className="text-xl font-display text-amber-400 tabular-nums">
+                  <span className="text-xl font-display text-cyan-400 tabular-nums">
                     {formatCurrency(total)}
                   </span>
                 </div>
@@ -361,14 +361,14 @@ export const CartDrawer: React.FC = () => {
               <button
                 type="button"
                 onClick={handleCheckoutWhatsApp}
-                className="w-full py-3.5 px-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-neutral-950 font-bold text-sm flex items-center justify-center gap-2.5 transition-all shadow-lg active:scale-98 cursor-pointer"
+                className="w-full py-3.5 px-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-sm flex items-center justify-center gap-2.5 transition-all shadow-lg active:scale-98 cursor-pointer"
               >
-                <MessageCircle className="w-5 h-5 fill-neutral-950 stroke-none" />
+                <MessageCircle className="w-5 h-5 fill-slate-950 stroke-none" />
                 <span>Pedir por WhatsApp (+54 9 388...)</span>
                 <ArrowRight className="w-4 h-4 stroke-[2.5]" />
               </button>
 
-              <div className="text-[11px] text-center text-neutral-400 leading-tight">
+              <div className="text-[11px] text-center text-slate-400 leading-tight">
                 Se abrirá WhatsApp con el pedido listo para enviar. Sin pagos automáticos por la web; coordinamos seña y entrega directamente con vos.
               </div>
             </div>

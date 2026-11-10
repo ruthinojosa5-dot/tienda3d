@@ -3,6 +3,21 @@ import { Producto } from '../types';
 export const FALLBACK_PRODUCTOS: Producto[] = [
   {
     id: 1,
+    nombre: 'Turbina Voronoi Mecánica de Alta Precisión',
+    precio: 11800,
+    imagen_url: '/src/assets/images/showcase_3d_printers_1794347023025.jpg',
+    material: 'PETG / Silk',
+    stock: 9,
+    descripcion: 'Diseño aerodinámico impreso en CoreXY a 0.12mm con filamento bicromático cian y plata. Alta resistencia centrífuga y tolerancia calibrada.',
+    categoria: 'Ingeniería & Prototipos',
+    dimensiones: '10 x 10 x 7 cm',
+    tiempo_estimado: '6 hs en impresora 3D',
+    relleno_recomendado: '30% Gyroid',
+    colores_disponibles: ['Cian Eléctrico / Plata', 'Negro Mate', 'Cobre Seda'],
+    destacado: true,
+  },
+  {
+    id: 2,
     nombre: 'Maceta Geométrica Espiral Voronoi',
     precio: 8500,
     imagen_url: '/src/assets/images/product_geometric_planter_1794346033055.jpg',

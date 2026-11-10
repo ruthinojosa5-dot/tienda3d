@@ -51,19 +51,19 @@ export const MaterialsSection: React.FC = () => {
   ];
 
   return (
-    <section id="materiales" className="py-16 sm:py-20 border-b border-neutral-800/80 bg-neutral-950">
+    <section id="materiales" className="py-16 sm:py-20 border-b border-slate-800/80 bg-slate-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         
         {/* Header */}
         <div className="max-w-2xl space-y-3">
-          <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-400 uppercase tracking-wider">
+          <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-400 uppercase tracking-wider">
             <Layers className="w-4 h-4" />
             <span>Guía Técnica de Filamentos y Resinas</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold font-display text-white text-balance">
             El material justo para cada necesidad
           </h2>
-          <p className="text-sm text-neutral-400 leading-relaxed">
+          <p className="text-sm text-slate-400 leading-relaxed">
             En Universo 3D trabajamos con filamentos de marcas líderes (Printalot, Grilon3, eSun) rigurosamente deshidratados para asegurar capas libres de burbujas y máxima adhesión estructural.
           </p>
         </div>
@@ -75,14 +75,14 @@ export const MaterialsSection: React.FC = () => {
             return (
               <div
                 key={mat.name}
-                className="flex flex-col justify-between p-6 rounded-2xl bg-neutral-900/50 border border-neutral-800/80 hover:border-neutral-700 transition-colors space-y-4"
+                className="flex flex-col justify-between p-6 rounded-2xl bg-slate-900/50 border border-slate-800/80 hover:border-slate-700 transition-colors space-y-4"
               >
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="p-2.5 rounded-xl bg-neutral-800 text-amber-400">
+                    <span className="p-2.5 rounded-xl bg-slate-800 text-cyan-400">
                       <Icon className="w-5 h-5" />
                     </span>
-                    <span className="text-xs font-medium text-neutral-400 font-mono">
+                    <span className="text-xs font-medium text-slate-400 font-mono">
                       {mat.tag}
                     </span>
                   </div>
@@ -91,21 +91,21 @@ export const MaterialsSection: React.FC = () => {
                     {mat.name}
                   </h3>
 
-                  <p className="text-xs text-neutral-300 leading-relaxed">
+                  <p className="text-xs text-slate-300 leading-relaxed">
                     {mat.description}
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-neutral-800/60 space-y-2 text-xs">
-                  <div className="flex justify-between text-neutral-400">
+                <div className="pt-4 border-t border-slate-800/60 space-y-2 text-xs">
+                  <div className="flex justify-between text-slate-400">
                     <span>Resistencia térmica:</span>
-                    <span className="text-neutral-200 font-medium font-mono">{mat.temp}</span>
+                    <span className="text-slate-200 font-medium font-mono">{mat.temp}</span>
                   </div>
-                  <div className="flex justify-between text-neutral-400">
+                  <div className="flex justify-between text-slate-400">
                     <span>Comportamiento:</span>
-                    <span className="text-neutral-200 font-medium">{mat.resistencia}</span>
+                    <span className="text-slate-200 font-medium">{mat.resistencia}</span>
                   </div>
-                  <div className="text-[11px] text-amber-400/90 pt-1">
+                  <div className="text-[11px] text-cyan-400/90 pt-1">
                     🎯 <em>{mat.usos}</em>
                   </div>
                 </div>
