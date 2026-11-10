@@ -1,0 +1,6 @@
+{
+  "name": "Universo 3D - Taller de Impresión 3D",
+  "description": "Catálogo online y tienda de impresiones 3D personalizadas en PLA, PETG, ABS y Resina con pedidos vía WhatsApp.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
